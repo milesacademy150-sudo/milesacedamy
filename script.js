@@ -22,6 +22,7 @@ enquiryForm?.addEventListener('submit', async event => {
   const formData = Object.fromEntries(new FormData(enquiryForm).entries());
   formData._subject = 'New Miles Academy website enquiry';
   formData._template = 'table';
+  formData._url = window.location.href.split('?')[0].split('#')[0];
 
   try {
     const response = await fetch('https://formsubmit.co/ajax/milesacademy150@gmail.com', {
@@ -41,7 +42,7 @@ enquiryForm?.addEventListener('submit', async event => {
     message.textContent = `Thank you, ${name}! Your enquiry has been sent. We will contact you soon.`;
     enquiryForm.reset();
   } catch (error) {
-    message.textContent = 'Sorry, your enquiry could not be sent right now. Please call us at +91 74792 29025.';
+    message.textContent = `Enquiry not sent: ${error.message || 'Please try again or call +91 74792 29025.'}`;
   } finally {
     submitButton.disabled = false;
   }
