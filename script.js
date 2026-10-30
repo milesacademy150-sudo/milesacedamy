@@ -7,9 +7,6 @@ menuButton?.addEventListener('click', () => {
 document.querySelectorAll('.menu a').forEach(link => link.addEventListener('click', () => {
   menu.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false');
 }));
-document.querySelector('#enquiry-form')?.addEventListener('submit', event => {
-  event.preventDefault();
-  const name = new FormData(event.currentTarget).get('name');
-  document.querySelector('#form-message').textContent = `Thanks, ${name}! We'll call you shortly.`;
-  event.currentTarget.reset();
+document.querySelector('#enquiry-form')?.addEventListener('submit', () => {
+  document.querySelector('#form-message').textContent = 'Sending your callback request…';
 });
