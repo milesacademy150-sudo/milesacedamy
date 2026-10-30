@@ -22,7 +22,6 @@ enquiryForm?.addEventListener('submit', async event => {
   const formData = Object.fromEntries(new FormData(enquiryForm).entries());
   formData._subject = 'New Miles Academy website enquiry';
   formData._template = 'table';
-  formData._captcha = 'false';
 
   try {
     const response = await fetch('https://formsubmit.co/ajax/milesacademy150@gmail.com', {
